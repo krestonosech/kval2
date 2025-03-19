@@ -30,6 +30,10 @@ async function register() {
     }
 
     await axios.post('http://127.0.0.1:5000/register', data)
+    const token = await axios.post('http://127.0.0.1:5000/login', data)
+    localStorage.setItem('token', token.data.access_token)
+    localStorage.setItem('refreshToken', token.data.refresh_token)
+    localStorage.setItem('username', username.value)
     router.push('/main')
   } finally {
     console.log('class');
