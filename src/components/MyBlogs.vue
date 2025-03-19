@@ -1,7 +1,7 @@
 <template>
   <div class="class">
-		<h3>{{ props.item.title }}</h3>
-		<p>{{ props.item.text }}</p>
+		<h3 class="h3">{{ props.item.title }}</h3>
+		<p class="p">{{ props.item.text }}</p>
 		<div class="icons">
 			<div @click="addComment()" class="mdi mdi-comment-text-outline"></div>
 			<div @click="router.push({path: '/create', query: {title: props.item.title, text: props.item.text, id: props.item.id}})" class="mdi mdi-pencil-outline"></div>
@@ -13,7 +13,7 @@
 		<button @click="sendComment">{{isEdit ? 'Отредактировать' : 'Отправить'}}</button>
 	</div>
 	<div v-if="isComment" class="otherComments">
-		<h3>Комментарии</h3>
+		<h3>{{comments.length ? 'Комментарии' : 'Оставьте первый комментарий!'}}</h3>
 		<div v-for="item in comments" :key="item.id" style="display: flex; flex-direction: row; justify-content: space-between;">
 			<p>{{ item.username }}: {{ item.text }}</p>
 			<div style="display: flex; flex-direction: row">
@@ -59,7 +59,7 @@ async function addComment(item?: boolean | true) {
       access_token: localStorage.getItem('token'),
       blog_id: props.item.id,
 			shift: 1,
-			limit: 10,
+			limit: 100,
     }
 
     const response = await axios.post('http://127.0.0.1:5000/get_messages', data)
@@ -119,6 +119,12 @@ async function editMessage(item: TableMessages) {
 </script>
 
 <style scoped>
+.h3 {
+	padding: 50px 50px 20px 50px;
+}
+.p {
+	padding: 20px 50px 50px 50px;
+}
 .otherComments {
 	display: flex;
 	flex-direction: column;
@@ -146,6 +152,7 @@ ul {
 	border: solid 1px white;
 	border-radius: 10px;
 	margin-bottom: 20px;
+	background-color: rgb(49, 49, 49) !important;
 }
 .mdi-heart {
 	padding: 10px;
