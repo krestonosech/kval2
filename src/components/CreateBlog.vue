@@ -1,8 +1,8 @@
 <template>
   <div class="class-class">
 		<h1>{{props.title ? 'Изменение' : 'Создание'}} записи</h1>
-		<textarea class="title" placeholder="Введите название записи" v-model="title"/>
-		<textarea class="text" placeholder="Введите текст записи" v-model="text"/>
+		<input class="title" placeholder="Введите название записи" v-model="title"/>
+		<input class="text" placeholder="Введите текст записи" v-model="text"/>
 		<div class="buttons">
 			<button @click="close">Отменить</button>
 			<button @click="create">{{props.title ? 'Изменить' : 'Создать'}} запись</button>
@@ -65,28 +65,13 @@ function close() {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	gap: 20px;
 }
 
-.title {
-	width: 90%;
-	height: 50px;
-}
-.text {
-	width: 90%;
-	line-height: 1;
-	height: 400px;
-}
-
 .buttons {
-	position: fixed;
 	display: flex;
+	flex-direction: column;
 	gap: 12px;
-	bottom: 0;
-	right: 0;
-	margin-bottom: 30px;
-	margin-right: 5%;
 }
 </style>

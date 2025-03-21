@@ -16,17 +16,18 @@ setInterval(async () => {
 * {
   margin: 0;
   padding: 0;
-  color: white;
+  color: black;
   font-family: sans-serif;
 }
 .class {
-  background-color: black !important;
+  background-color: white !important;
 }
 
 input {
-  background-color: black;
-  border: white 1px solid;
+  background-color: white;
+  border: rgb(160, 160, 160) 1px solid;
   border-radius: 10px;
+  color: black;
   cursor: pointer;
   padding: 10px;
   transition: 0.7s;
@@ -37,14 +38,21 @@ button {
   border: solid white 1px;
   background-color: black;
   border-radius: 10px;
+  color: white;
   cursor: pointer;
   transition: 0.7s;
+  background-image: linear-gradient(135deg, #2c3e50, #3498db, #e74c3c);
+  background-size: 200% 100%;
+  background-position: 100% 0;
 }
 
+button:hover {
+  background-position: 0 0;
+}
 textarea {
   padding: 10px;
-  border: solid white 1px;
-  background-color: black;
+  border: solid black 1px;
+  background-color: white;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.7s;

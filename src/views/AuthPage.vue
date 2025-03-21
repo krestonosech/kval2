@@ -1,9 +1,10 @@
 <template>
   <div class="class">
     <h1>Авторизация</h1>
-    <input type="text" v-model="username">
-    <input type="password" v-model="password">
+    <input type="text" placeholder="Логин" v-model="username">
+    <input type="password" placeholder="Пароль" v-model="password">
     <button @click="login">Авторизоваться</button>
+    <p>Еще не зарегистрированы?</p>
     <button @click="router.push('/')">Зарегистрироваться</button>
   </div>
 </template>
@@ -18,6 +19,7 @@ const username = ref('')
 const password = ref('')
 
 async function login() {
+  if (!username.value || !password.value ) return
   try {
     const data = {
       username: username.value,
@@ -40,7 +42,6 @@ async function login() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100vh;
   gap: 16px;
 }

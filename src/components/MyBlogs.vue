@@ -10,7 +10,7 @@
   </div>
 	<div class="comments" v-if="isComment" >
 		<textarea v-model="comment" placeholder="Оставить комментарий"/>
-		<button @click="sendComment">{{isEdit ? 'Отредактировать' : 'Отправить'}}</button>
+		<button style="display: flex; width: 100%; align-items: center; justify-content: center;" @click="sendComment">{{isEdit ? 'Отредактировать' : 'Отправить'}}</button>
 	</div>
 	<div v-if="isComment" class="otherComments">
 		<h3>{{comments.length ? 'Комментарии' : 'Оставьте первый комментарий!'}}</h3>
@@ -119,23 +119,20 @@ async function editMessage(item: TableMessages) {
 </script>
 
 <style scoped>
-.h3 {
-	padding: 50px 50px 20px 50px;
-}
-.p {
-	padding: 20px 50px 50px 50px;
-}
+
 .otherComments {
 	display: flex;
 	flex-direction: column;
 	justify-content: left;
-	width: 40%;
+	width: 20%;
 }
 .comments {
 	display: flex;
 	align-items: center;
-	width: 40%;
+	width: 18%;
 	justify-content: center;
+	flex-direction: column;
+	gap: 10px;
 }
 textarea {
 	width: 100%;
@@ -148,11 +145,10 @@ ul {
 .class {
 	height: inherit !important;
 	min-height: 100px !important;
-	width: 40%;
-	border: solid 1px white;
+	width: 20%;
+	border: solid 1px black;
 	border-radius: 10px;
 	margin-bottom: 20px;
-	background-color: rgb(49, 49, 49) !important;
 }
 .mdi-heart {
 	padding: 10px;
@@ -184,10 +180,12 @@ ul {
 	padding: 10px;
 	cursor: pointer;
 	font-size: 20px;
+	color: darkblue;
 }
 .mdi-delete {
 	padding: 10px;
 	cursor: pointer;
 	font-size: 20px;
+	color: red;
 }
 </style>

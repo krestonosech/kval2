@@ -1,10 +1,11 @@
 <template>
   <div class="class">
     <h1>Регистрация</h1>
-    <input type="text" v-model="username">
-    <input type="password" v-model="password">
-    <input type="password" v-model="confirmPassword">
+    <input type="text" placeholder="Логин" v-model="username">
+    <input type="password" placeholder="Пароль" v-model="password">
+    <input type="password" placeholder="Подтвердите пароль" v-model="confirmPassword">
     <button @click="register">Зарегистрироваться</button>
+    <p>Уже зарегистрированы?</p>
     <button @click="router.push('/login')">Авторизоваться</button>
   </div>
 </template>
@@ -19,7 +20,7 @@ const password = ref('')
 const confirmPassword = ref('')
 
 async function register() {
-  if (password.value !== confirmPassword.value) {
+  if (password.value !== confirmPassword.value || !username.value || !password.value ) {
     alert('Passwords do not match')
     return
   }
@@ -34,6 +35,8 @@ async function register() {
     localStorage.setItem('token', token.data.access_token)
     localStorage.setItem('refreshToken', token.data.refresh_token)
     localStorage.setItem('username', username.value)
+    console.log(localStorage.getItem('username'));
+    
     router.push('/main')
   } finally {
     console.log('class');
@@ -46,7 +49,6 @@ async function register() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100vh;
   gap: 16px;
 }
